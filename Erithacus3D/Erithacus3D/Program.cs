@@ -1,3 +1,3 @@
 ﻿
-using var game = new Erithacus3D.SceneManager();
+using var game = new Erithacus3D.HackingGame.HackingGameManager();
 game.Run();

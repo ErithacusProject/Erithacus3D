@@ -10,6 +10,7 @@ namespace Erithacus3D.Engine
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         List<GameObject> gameObjects = new List<GameObject>();
+        
 
         public GameManager()
         {

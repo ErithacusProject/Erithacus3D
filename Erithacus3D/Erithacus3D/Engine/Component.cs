@@ -12,7 +12,7 @@ namespace Erithacus3D.Engine
     /// </summary>
    public class Component : GameComponent
     {
-        public Component(Game game, GameObject owner) : base(game) { gameObject = owner; }
+        public Component(Game game, GameObject owner) : base(game) { gameObject = owner; game.Components.Add(this); }
         public Guid id { get; protected set; }
         public GameObject gameObject { get; protected set; }
 

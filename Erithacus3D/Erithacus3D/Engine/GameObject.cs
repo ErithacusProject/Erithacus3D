@@ -33,7 +33,7 @@ namespace Erithacus3D.Engine
         /// </summary>
         public void SetActive(bool active) 
         { 
-            foreach (Component comp in components)
+            foreach (GameComponent comp in components)
             {
                 comp.Enabled = active;
             }
@@ -41,9 +41,9 @@ namespace Erithacus3D.Engine
         }
 
         #region Component controllers
-        public T GetComponent<T>() where T : Component
+        public T GetComponent<T>() where T : GameComponent
         {
-            foreach (Component comp in components)
+            foreach (GameComponent comp in components)
             {
                 if (comp is T)
                 {
@@ -57,9 +57,9 @@ namespace Erithacus3D.Engine
         /// creates a component and sets its default values, to make it specific
         /// the specific initializer for the class will need to be called.
         /// </summary>
-        public T AddComponent<T>() where T : Component
+        public T AddComponent<T>() where T : GameComponent
         {
-            T component = (T)Activator.CreateInstance(typeof(T));
+            T component = (T)Activator.CreateInstance(typeof(T), game, this);
             components.Add(component);
             component.Initialize();
             return component;
@@ -68,9 +68,9 @@ namespace Erithacus3D.Engine
         /// <summary>
         /// removes a component from a gameobject
         /// </summary>
-        public void RemoveComponent(Component component)
+        public void RemoveComponent(GameComponent component)
         {
-            foreach (Component comp in components)
+            foreach (GameComponent comp in components)
             {
                 if (comp == component)
                 {
