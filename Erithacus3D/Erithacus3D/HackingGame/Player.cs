@@ -12,10 +12,11 @@ namespace Erithacus3D.HackingGame
         public Player(GameManager manager) : base(manager) 
         { 
             Renderer ren = AddComponent<Renderer>();
-            ren.Initialize("Models/cube", null);
+            ren.Initialize("Models/player", null);
 
             AddComponent<Rigidbody>();
-            AddComponent<PlayerMovement>();
+            PlayerMovement movement =  AddComponent<PlayerMovement>();
+            movement.playerSpeed = 2.5f;
         }
     }
 }

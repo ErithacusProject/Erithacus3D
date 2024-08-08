@@ -25,9 +25,11 @@ namespace Erithacus3D.Engine
         {
             base.Initialize();
             id = Guid.NewGuid();
+            gameObject.transform.rotation.X = 90;
 
             if (model != null) { _model = model; }
             else if (path != null) { _model = Game.Content.Load<Model>(path); }
+            
         }
 
         public override void Draw(GameTime gameTime)
@@ -40,12 +42,13 @@ namespace Erithacus3D.Engine
 
                     effect.TextureEnabled = true;
                     effect.Alpha = 1;
-                    effect.World = Matrix.CreateTranslation(gameObject.transform.position);
-                    effect.View = Matrix.CreateLookAt(new Vector3(0, 0, 10), Vector3.Zero, -Vector3.UnitY); ;
+                    effect.World = Matrix.CreateTranslation(gameObject.transform.position) * Matrix.CreateRotationX(gameObject.transform.rotation.X);
+                    effect.View = Matrix.CreateLookAt(new Vector3(0, 0, 10), Vector3.Zero, Vector3.UnitX); ;
                     effect.Projection = projection;
                     effect.EnableDefaultLighting();
-                    //effect.AmbientLightColor = new Vector3(0.2f, 0.1f, 0.3f);
-                    //effect.DiffuseColor = new Vector3(0.96f, 0.98f, 0.89f);
+                    effect.PreferPerPixelLighting = true;
+                    effect.AmbientLightColor = new Vector3(0.2f, 0.1f, 0.3f);
+                    effect.DiffuseColor = new Vector3(0.96f, 0.98f, 0.89f);
                 }
 
                 mesh.Draw();

@@ -11,6 +11,9 @@ namespace Erithacus3D.HackingGame
 {
     public class PlayerMovement : Engine.Component
     {
+        public float playerSpeed { get; set; }
+
+
         public PlayerMovement(Game gameManager, GameObject owner) : base(gameManager, owner) 
         {
              Input.playerDirection += setMoveDirection;
@@ -18,8 +21,7 @@ namespace Erithacus3D.HackingGame
 
         private void setMoveDirection(Vector3 direction)
         {
-            Debug.WriteLine("direction key pressed");
-            gameObject.GetComponent<Rigidbody>().AddForce(direction);
+            gameObject.GetComponent<Rigidbody>().AddForce(direction * playerSpeed);
         }
 
     }
