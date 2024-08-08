@@ -32,7 +32,6 @@ namespace Erithacus3D.Engine
 
         public override void Draw(GameTime gameTime)
         {
-            Debug.WriteLine("draw");
             base.Draw(gameTime);
             foreach (var mesh in _model.Meshes)
             {
@@ -42,7 +41,7 @@ namespace Erithacus3D.Engine
                     effect.TextureEnabled = true;
                     effect.Alpha = 1;
                     effect.World = Matrix.CreateTranslation(gameObject.transform.position);
-                    effect.View = Matrix.CreateLookAt(new Vector3(0, 0, 10), gameObject.transform.position, -Vector3.UnitY); ;
+                    effect.View = Matrix.CreateLookAt(new Vector3(0, 0, 10), Vector3.Zero, -Vector3.UnitY); ;
                     effect.Projection = projection;
                     effect.EnableDefaultLighting();
                     //effect.AmbientLightColor = new Vector3(0.2f, 0.1f, 0.3f);

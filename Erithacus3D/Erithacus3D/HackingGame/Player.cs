@@ -13,6 +13,9 @@ namespace Erithacus3D.HackingGame
         { 
             Renderer ren = AddComponent<Renderer>();
             ren.Initialize("Models/cube", null);
+
+            AddComponent<Rigidbody>();
+            AddComponent<PlayerMovement>();
         }
     }
 }
