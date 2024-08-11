@@ -25,7 +25,7 @@ namespace Erithacus3D.Engine
         {
             base.Initialize();
             id = Guid.NewGuid();
-            gameObject.transform.rotation.X = 90;
+            gameObject.transform.rotation.X = 0;
 
             if (model != null) { _model = model; }
             else if (path != null) { _model = Game.Content.Load<Model>(path); }
@@ -39,7 +39,6 @@ namespace Erithacus3D.Engine
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-
                     effect.TextureEnabled = true;
                     effect.Alpha = 1;
                     effect.World = Matrix.CreateTranslation(gameObject.transform.position) * Matrix.CreateRotationX(gameObject.transform.rotation.X);

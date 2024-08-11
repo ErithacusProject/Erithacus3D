@@ -20,11 +20,11 @@ namespace Erithacus3D.HackingGame
             Vector3 movementDirection = Vector3.Zero;
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
-                movementDirection += Vector3.Up;
+                movementDirection += Vector3.Forward;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
-                movementDirection += Vector3.Down;
+                movementDirection += Vector3.Backward;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
