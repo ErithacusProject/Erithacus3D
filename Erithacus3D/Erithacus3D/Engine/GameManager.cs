@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Erithacus3D.Engine.Math;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Erithacus3D.Engine
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         List<GameObject> gameObjects = new List<GameObject>();
-        
+        List<Collision> colliders = new List<Collision>();
 
         public GameManager()
         {
@@ -28,6 +29,10 @@ namespace Erithacus3D.Engine
         {
             gameObjects.Remove(gameObject);
         }
+
+        public void AddCollider(Collision collider) { colliders.Add(collider); }
+        public void RemoveCollider(Collision collider) { colliders.Remove(collider); }
+
 
         protected override void Initialize()
         {

@@ -12,7 +12,7 @@ namespace Erithacus3D.HackingGame
     {
         public Player(GameManager manager) : base(manager) 
         {
-            transform.rotation = new Vector3(0,80,0);
+            transform.rotation = new Vector3(0,90,0);
             Renderer ren = AddComponent<Renderer>();
             ren.Initialize("Models/player", null, "Textures/white");
 

@@ -18,19 +18,19 @@ namespace Erithacus3D.HackingGame
             base.Update(gameTime);
             #region movement inputs
             Vector3 movementDirection = Vector3.Zero;
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
                 movementDirection += Vector3.Forward;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
                 movementDirection += Vector3.Backward;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
             {
                 movementDirection += Vector3.Left;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
                 movementDirection += Vector3.Right;
             }
