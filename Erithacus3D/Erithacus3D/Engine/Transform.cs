@@ -14,7 +14,7 @@ namespace Erithacus3D.Engine
         public Transform(Game sceneManager, GameObject owner) : base(sceneManager, owner) 
         { 
             position = Vector3.Zero;
-            rotation = Quaternion.Identity;
+            rotation = new();
             scale = Vector3.One;
             children = new List<GameObject>();
         }
@@ -23,7 +23,7 @@ namespace Erithacus3D.Engine
         GameObject parent;
 
         public Vector3 position;
-        public Quaternion rotation;
+        public Vector3 rotation;
         public Vector3 scale;
 
         List<GameObject> children;
@@ -33,6 +33,11 @@ namespace Erithacus3D.Engine
             get { return children.Count; }
             protected set { }
         }
+        public void SetRotation(Vector3 eulerAngles)
+        {
+            
+        }
+
 
         #endregion
 

@@ -27,17 +27,24 @@ namespace Erithacus3D.Engine
         {
             base.Initialize();
             id = Guid.NewGuid();
-            gameObject.transform.rotation.X = 0;
 
             if (model != null) { _model = model; }
             else if (path != null) { _model = Game.Content.Load<Model>(path); }
             texture = Game.Content.Load<Texture2D>(texturePath);
-
         }
 
         public override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
+            Matrix rotationMatrix = Matrix.CreateFromYawPitchRoll(
+                MathHelper.ToRadians(gameObject.transform.rotation.Y),
+               MathHelper.ToRadians(gameObject.transform.rotation.X), 
+               MathHelper.ToRadians(gameObject.transform.rotation.Z));
+            Matrix worldMatrix =
+                rotationMatrix *
+                Matrix.CreateTranslation(gameObject.transform.position); 
+
+
             foreach (var mesh in _model.Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)
@@ -45,8 +52,8 @@ namespace Erithacus3D.Engine
                     effect.Texture = texture;
                     effect.TextureEnabled = true;
                     effect.Alpha = 1;
-                    effect.World = Matrix.CreateTranslation(gameObject.transform.position) * Matrix.CreateRotationX(gameObject.transform.rotation.X);
-                    effect.View = Matrix.CreateLookAt(new Vector3(0, 0, 10), Vector3.Zero, Vector3.UnitX); ;
+                    effect.World = worldMatrix;
+                    effect.View = Matrix.CreateLookAt(new Vector3(0, 50, 0), Vector3.Down, Vector3.UnitX); ;
                     effect.Projection = projection;
                     effect.EnableDefaultLighting();
                     effect.PreferPerPixelLighting = true;
