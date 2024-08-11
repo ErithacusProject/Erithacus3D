@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,10 +19,11 @@ namespace Erithacus3D.Engine
         public Guid id { get; protected set; }
 
         private Model _model;
+        private Texture2D texture;
 
         private Matrix projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), 800f / 480f, 0.1f, 100f);
 
-        public void Initialize(string path, Model model)
+        public void Initialize(string path, Model model, string texturePath)
         {
             base.Initialize();
             id = Guid.NewGuid();
@@ -29,7 +31,8 @@ namespace Erithacus3D.Engine
 
             if (model != null) { _model = model; }
             else if (path != null) { _model = Game.Content.Load<Model>(path); }
-            
+            texture = Game.Content.Load<Texture2D>(texturePath);
+
         }
 
         public override void Draw(GameTime gameTime)
@@ -39,6 +42,7 @@ namespace Erithacus3D.Engine
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
+                    effect.Texture = texture;
                     effect.TextureEnabled = true;
                     effect.Alpha = 1;
                     effect.World = Matrix.CreateTranslation(gameObject.transform.position) * Matrix.CreateRotationX(gameObject.transform.rotation.X);

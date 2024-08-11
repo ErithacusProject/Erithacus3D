@@ -12,7 +12,7 @@ namespace Erithacus3D.HackingGame
         public Player(GameManager manager) : base(manager) 
         { 
             Renderer ren = AddComponent<Renderer>();
-            ren.Initialize("Models/player", null);
+            ren.Initialize("Models/player", null, "Textures/white");
 
             AddComponent<Rigidbody>();
             PlayerMovement movement =  AddComponent<PlayerMovement>();
